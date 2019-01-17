@@ -14,67 +14,55 @@ const createProductHTML = product => `
 
       <footer class="product__footer">
         Price: ${product.price.toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD"
+          style: "currency",
+          currency: "USD"
         })}
 
-        <button id="${product.id}" class="product__purchaseButton">Purchase</button>
+        <button id="${
+          product.id
+        }" class="product__purchaseButton">Purchase</button>
       </footer>
 
     </section>
-`
-
-
+`;
 
 // Iterate all products
 for (product of products) {
-    // Create HTML representation
-    const theProductHTML = createProductHTML(product)
+  // Create HTML representation
+  const theProductHTML = createProductHTML(product);
 
-    // Reference to container
-    const containerEl = document.querySelector("#productList")
+  // Reference to container
+  const containerEl = document.querySelector("#productList");
 
-    // Update HTML of container
-    containerEl.innerHTML += theProductHTML
+  // Update HTML of container
+  containerEl.innerHTML += theProductHTML;
 }
 
 // Get a reference to all purchase buttons
-const allButtons = document.querySelectorAll(".product__purchaseButton")
+const allButtons = document.querySelectorAll(".product__purchaseButton");
 
 // Add a click event listener to each button
 for (button of allButtons) {
-    button.addEventListener(
-        "click",
-        (event) => {
-            // Find the product whose `id` property is equal to
-            // the "id" attribute of the button that was clicked on
-            const foundProduct = products.find((product) => {
-                return parseInt(event.target.id) === product.id
-            })
+  button.addEventListener("click", event => {
+    // Find the product whose `id` property is equal to
+    // the "id" attribute of the button that was clicked on
+    const foundProduct = products.find(product => {
+      return parseInt(event.target.id) === product.id;
+    });
 
-            // Only if something was found, add the object to the
-            // shopping cart array
-            if (foundProduct !== null) {
-                shoppingCart.push(foundProduct)
-                displayShoppingCart()
-            }
+    // Only if something was found, add the object to the
+    // shopping cart array
+    if (foundProduct !== null) {
+      if (foundProduct.quant > 0) {
+        foundProduct.quant++;
+    //   } else if () {
 
-        }
-    )
-
+      } else {
+        shoppingCart.push(foundProduct);
+        foundProduct.quant = 0;
+        foundProduct.quant++;
+      }
+      displayShoppingCart();
+    }
+  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
