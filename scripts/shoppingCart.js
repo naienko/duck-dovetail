@@ -17,7 +17,7 @@ const displayShoppingCart = () => {
           currency: "USD"
         })}</div>
 
-        <button id="${idx}" class="cart_removeButton">Remove</button>
+        <div><button id="${idx}" class="cart_removeButton">Remove</button></div>
         </section>
         `;
 // more complex logic would be needed if you wanted to multiply the price inline in the cart; this works for cart total

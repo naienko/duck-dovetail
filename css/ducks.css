@@ -10,17 +10,22 @@ body {
 
 
 .product {
-    flex-basis: 31%;
+    flex-basis: 25%;
     border: 2px dotted goldenrod;
     padding: 15px;
+    margin: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product__header {
     text-align: center;
+    margin-bottom: -15px;
 }
 
 .product__description {
-    font-size: 1.25em;
+    /*font-size: 1.25em; */
 }
 
 .shoppingCart__header {
@@ -36,6 +41,11 @@ body {
     display: flex;
     flex-direction: row;
     font-size: 1.75em;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 1px solid gray;
+}
+
+.shoppingCart__item div {
+    min-width: 24%;
+    text-align: center;
 }
