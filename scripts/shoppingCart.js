@@ -36,18 +36,17 @@ const displayShoppingCart = () => {
   // Add a click event listener to each button
   for (const button of allRemoveButtons) {
     button.addEventListener("click", event => {
-        const itemIndex = parseInt(event.target.id);
+      const itemIndex = parseInt(event.target.id);
 
-        const currentProduct = shoppingCart[itemIndex];
+      const currentProduct = shoppingCart[itemIndex];
 
-        if (currentProduct.quant > 1) {
-            currentProduct.quant--;
-        } else if (currentProduct.quant === 1) {
-            delete currentProduct.quant;
-            shoppingCart.splice(itemIndex, 1);
-        }
-        console.log(shoppingCart);
-        displayShoppingCart();
+      if (currentProduct.quant > 1) {
+        currentProduct.quant--;
+      } else if (currentProduct.quant === 1) {
+        delete currentProduct.quant;
+        shoppingCart.splice(itemIndex, 1);
+      }
+      displayShoppingCart();
     });
   }
 };
