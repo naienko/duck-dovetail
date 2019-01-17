@@ -37,7 +37,7 @@ const displayShoppingCart = () => {
   for (const button of allRemoveButtons) {
     button.addEventListener("click", event => {
       const itemIndex = parseInt(event.target.id);
-
+// use the index that is linked to the button to pull the specific object out of the shoppingcart array
       const currentProduct = shoppingCart[itemIndex];
 
       if (currentProduct.quant > 1) {
