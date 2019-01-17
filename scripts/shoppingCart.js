@@ -10,14 +10,15 @@ const displayShoppingCart = () => {
 // inserted a line in index.html as column header for shopping cart
     cartEl.innerHTML += `
         <section class="shoppingCart__item">
-        <div>${product.name}</div>
+        <div class="cart__name">${product.name}</div>
         <div>${product.quant}</div>
         <div>${product.price.toLocaleString("en-US", {
           style: "currency",
           currency: "USD"
         })}</div>
 
-        <div><button id="${idx}" class="cart_removeButton">Remove</button></div>
+        <div class="cart_button"><button id="${idx}" class="cart_removeButton">Remove</button></div>
+        <div class="cart_button"><button id="${idx}_all" class="cart_removeAllButton">Remove All</button></div>
         </section>
         `;
 // more complex logic would be needed if you wanted to multiply the price inline in the cart; this works for cart total
@@ -53,4 +54,17 @@ const displayShoppingCart = () => {
       displayShoppingCart();
     });
   }
+
+  const allRemoveAllButtons = document.querySelectorAll(".cart_removeAllButton");
+
+// Add a click event listener to each button
+for (const button of allRemoveAllButtons) {
+  button.addEventListener("click", event => {
+    const itemIndex = parseInt(event.target.id);
+    const currentProduct = shoppingCart[itemIndex];
+    delete currentProduct.quant;
+    shoppingCart.splice(itemIndex, 1);
+    displayShoppingCart();
+  });
+};
 };

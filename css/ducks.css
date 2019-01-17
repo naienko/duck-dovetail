@@ -45,7 +45,15 @@ body {
     border-bottom: 1px solid gray;
 }
 
+.shoppingCart__item .cart__name {
+    min-width: 30%;
+}
+
+.shoppingCart__item div.cart_button {
+    min-width: 10%;
+}
+
 .shoppingCart__item div {
-    min-width: 24%;
+    min-width: 25%;
     text-align: center;
 }
