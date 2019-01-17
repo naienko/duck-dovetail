@@ -53,16 +53,18 @@ for (button of allButtons) {
     // Only if something was found, add the object to the
     // shopping cart array
     if (foundProduct !== null) {
-      if (foundProduct.quant > 0) {
-        foundProduct.quant++;
-    //   } else if () {
-
-      } else {
-        shoppingCart.push(foundProduct);
-        foundProduct.quant = 0;
-        foundProduct.quant++;
-      }
-      displayShoppingCart();
+        if (foundProduct.quant > 0) {
+            foundProduct.quant++;
+    //  } else if (foundProduct === 0) {
+    //      shoppingCart.push(foundProduct);
+    //      foundProduct.quant++;
+        } else {
+            shoppingCart.push(foundProduct);
+            foundProduct.quant = 0;
+            foundProduct.quant++;
+        }
+    console.log(shoppingCart);
+    displayShoppingCart();
     }
   });
 }

@@ -20,7 +20,7 @@ const displayShoppingCart = () => {
         </section>
         `;
 
-    grandTotal += product.price;
+    grandTotal += product.price * product.quant;
   });
 
   cartEl.innerHTML += `
@@ -36,13 +36,18 @@ const displayShoppingCart = () => {
   // Add a click event listener to each button
   for (const button of allRemoveButtons) {
     button.addEventListener("click", event => {
-        const foundProduct = products.find(shoppingCart => {
-            return *find some way to pull the product id* === shoppingCart.id;
+        const itemIndex = parseInt(event.target.id);
+
+        const currentProduct = shoppingCart[itemIndex];
+
+        if (currentProduct.quant > 1) {
+            currentProduct.quant--;
+        } else if (currentProduct.quant === 1) {
+            delete currentProduct.quant;
+            shoppingCart.splice(itemIndex, 1);
         }
-    if 
-    const indexToRemove = parseInt(event.target.id);
-    shoppingCart.splice(indexToRemove, 1);
-    displayShoppingCart();
+        console.log(shoppingCart);
+        displayShoppingCart();
     });
   }
 };
