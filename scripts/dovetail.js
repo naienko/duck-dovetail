@@ -49,21 +49,16 @@ for (button of allButtons) {
     const foundProduct = products.find(product => {
       return parseInt(event.target.id) === product.id;
     });
-
+    const itemInCart = shoppingCart.find(buyMe => {
+      return foundProduct.id === buyMe.id;
+    });
     // Only if something was found, add the object to the
     // shopping cart array
-    if (foundProduct !== null) {
-      // check to see if the quant key/value exists in the foundproduct object
-      if (foundProduct.hasOwnProperty('quant')) {
-        // if the key/value exists increment by 1
-        foundProduct.quant++;
-      } else {
-        // if the key/value doesn't exist, put the item in the shoppingcart array
-        shoppingCart.push(foundProduct);
-        // and create the key/value on the object
-        foundProduct.quant = 1;
-      }
-      displayShoppingCart();
+    if (!itemInCart) {
+      shoppingCart.push(Object.assign({ quant: 1 }, foundProduct));
+    } else {
+      itemInCart.quant++;
     }
+    displayShoppingCart();
   });
 }

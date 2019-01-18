@@ -49,11 +49,7 @@ const displayShoppingCart = () => {
 // check the value of the quant key; if greater than 1 deincrement
       if (currentProduct.quant > 1) {
         currentProduct.quant--;
-      } else if (currentProduct.quant === 1) {
-// if there's ONLY 1 'copy' of the object in the cart, REMOVE the key, then remove the object from the cart
-// IMPORTANT you must EITHER remove the key/value, or deincrement it to 0
-// not sure what would happen if you deincremented it to 0, test later? -- LATER since changing the 'add product' button to look for the existence of the key/value, MUST remove property in order to be able to add it (and whole object) back later
-        delete currentProduct.quant;
+      } else {
         shoppingCart.splice(itemIndex, 1);
       }
       displayShoppingCart();
@@ -67,7 +63,6 @@ for (const button of allRemoveAllButtons) {
   button.addEventListener("click", event => {
     const itemIndex = parseInt(event.target.id);
     const currentProduct = shoppingCart[itemIndex];
-    delete currentProduct.quant;
     shoppingCart.splice(itemIndex, 1);
     displayShoppingCart();
   });
