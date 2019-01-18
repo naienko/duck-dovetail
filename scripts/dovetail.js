@@ -20,7 +20,7 @@ const createProductHTML = product => `
 
         <button id="${
           product.id
-        }" class="product__purchaseButton">Purchase</button>
+        }" class="product__purchaseButton">Add to Cart</button>
       </footer>
 
     </section>

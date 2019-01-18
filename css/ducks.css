@@ -2,12 +2,23 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+#wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+body > header h1 {
+    border-bottom: 3px solid black;
+    max-width: 45%;
+}
+
 #productList {
+    flex-basis: 50%;
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
 }
-
 
 .product {
     flex-basis: 25%;
@@ -29,20 +40,24 @@ body {
 }
 
 .shoppingCart__header {
-    font-size: 3em;
+    font-size: 18px;
 }
 
 #cartItems {
     display: flex;
     flex-direction: column;
 }
+#shoppingCart {
+    flex-basis: 48%;
+}
 
 .shoppingCart__item {
     display: flex;
     flex-direction: row;
-    font-size: 1.75em;
+    font-size: 16px;
     justify-content: space-around;
     border-bottom: 1px solid gray;
+    margin: 1px;
 }
 
 .shoppingCart__item .cart__name {
@@ -56,4 +71,5 @@ body {
 .shoppingCart__item div {
     min-width: 25%;
     text-align: center;
+    /* border: 1px solid #ff0; */
 }
