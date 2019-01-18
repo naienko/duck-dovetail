@@ -5,11 +5,16 @@ const displayShoppingCart = () => {
   cartEl.innerHTML = "";
 
   let grandTotal = 0;
-
+  let evenOdd = "";
   shoppingCart.forEach((product, idx) => {
 // inserted a line in index.html as column header for shopping cart
+  if (idx % 2 === 0) {
+    evenOdd = "even";
+  } else {
+    evenOdd = "odd";
+  }
     cartEl.innerHTML += `
-        <section class="shoppingCart__item">
+        <section class="shoppingCart__item ${evenOdd}">
         <div class="cart__name">${product.name}</div>
         <div>${product.quant}</div>
         <div>${product.price.toLocaleString("en-US", {
@@ -47,7 +52,7 @@ const displayShoppingCart = () => {
       } else if (currentProduct.quant === 1) {
 // if there's ONLY 1 'copy' of the object in the cart, REMOVE the key, then remove the object from the cart
 // IMPORTANT you must EITHER remove the key/value, or deincrement it to 0
-// not sure what would happen if you deincremented it to 0, test later?
+// not sure what would happen if you deincremented it to 0, test later? -- LATER since changing the 'add product' button to look for the existence of the key/value, MUST remove property in order to be able to add it (and whole object) back later
         delete currentProduct.quant;
         shoppingCart.splice(itemIndex, 1);
       }

@@ -1,12 +1,13 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #dddddd;
 }
-
+/* 
 #wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
+} */
 
 body > header h1 {
     border-bottom: 3px solid black;
@@ -14,7 +15,7 @@ body > header h1 {
 }
 
 #productList {
-    flex-basis: 50%;
+    max-width: 50%;
     display: flex;
     flex-direction: row;
     flex-flow: wrap;
@@ -22,12 +23,18 @@ body > header h1 {
 
 .product {
     flex-basis: 25%;
-    border: 2px dotted goldenrod;
+    border: 1px solid lightgray;
+    background-color: #eeeeee;
+    box-shadow: 3px 3px 5px #aaaaaa;
     padding: 15px;
     margin: 4px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+.product:hover {
+    border: 1px solid #777777;
+    background-color: white;
 }
 
 .product__header {
@@ -48,28 +55,39 @@ body > header h1 {
     flex-direction: column;
 }
 #shoppingCart {
-    flex-basis: 48%;
+    /* flex-basis: 48%; */
+    position: fixed;
+    margin-left: 51%;
+    min-width: 47%;
+    top: 35px;
 }
 
-.shoppingCart__item {
+.shoppingCart__item, .shoppingCart__nav {
     display: flex;
     flex-direction: row;
     font-size: 16px;
     justify-content: space-around;
     border-bottom: 1px solid gray;
-    margin: 1px;
+    padding: 3px;
+}
+.even {
+    background-color: whitesmoke;
 }
 
-.shoppingCart__item .cart__name {
-    min-width: 30%;
+.shoppingCart__nav {
+    font-weight: bold;
 }
 
-.shoppingCart__item div.cart_button {
-    min-width: 10%;
-}
-
-.shoppingCart__item div {
-    min-width: 25%;
+.shoppingCart__item div, .shoppingCart__nav div {
+    flex-basis: 25%;
     text-align: center;
     /* border: 1px solid #ff0; */
+}
+
+div.cart__name {
+    flex-basis: 40%;
+}
+
+div.cart_button {
+    flex-basis: 5%;
 }

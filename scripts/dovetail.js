@@ -54,16 +54,14 @@ for (button of allButtons) {
     // shopping cart array
     if (foundProduct !== null) {
       // check to see if the quant key/value exists in the foundproduct object
-      if (foundProduct.quant > 0) {
-        // if the key/value exists it should always be greater than 0, so increment by 1
+      if (foundProduct.hasOwnProperty('quant')) {
+        // if the key/value exists increment by 1
         foundProduct.quant++;
       } else {
         // if the key/value doesn't exist, put the item in the shoppingcart array
         shoppingCart.push(foundProduct);
         // and create the key/value on the object
-        foundProduct.quant = 0;
-        // increment the value by 1
-        foundProduct.quant++;
+        foundProduct.quant = 1;
       }
       displayShoppingCart();
     }
